@@ -121,6 +121,51 @@ module "vpc" {
 ```
 
 ---
+### 🔧 Module - EC2 (Added in v1.0.1)
+
+Sample usage from `main.tf` in `environments/dev`:
+
+```hcl
+module "ec2" {
+  source             = "../../modules/ec2"
+  ami_id             = var.ami_id
+  instance_type      = var.instance_type
+  key_name           = var.key_name
+  subnet_id          = var.public_subnet_id
+  security_group_ids = var.security_group_ids
+}
+```
+
+
+### 🖥️ EC2 Variables (terraform.tfvars)
+Make sure these variables are defined in your terraform.tfvars:
+
+```hcl
+ami_id             = "ami-020cba7c55df1f615"
+instance_type      = "t2.micro"
+key_name           = "your-key-pair-name"
+public_subnet_id   = "subnet-xxxxxxxx"
+security_group_ids = ["sg-xxxxxxxx"]
+```
+
+---
+
+### 📥 Outputs After EC2 Creation
+
+EC2 Instance ID
+
+Public IP
+
+Availability Zone
+
+---
+
+### 🏷️ Releases
+v1.0.0 – Modular VPC
+
+v1.0.1 – Modular EC2 provisioning added
+
+---
 
 ### ✌️Author
 ### M. M. Inamdar
